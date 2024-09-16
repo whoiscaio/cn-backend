@@ -24,7 +24,6 @@ model User {
 model Unit {
   id                  Int           @id @default(autoincrement())
   name                String
-  allocation_capacity Int
   Allocations         Allocation[]
   Shifts              Shift[]       @relation("UnitShifts")  // Many-to-many relation with Shift
 }
