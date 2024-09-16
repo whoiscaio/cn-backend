@@ -2,7 +2,6 @@ import { Controller, Post, Delete, Body } from '@nestjs/common';
 import { AllocationService } from './allocation.service';
 import { AllocateUserDto } from './dto/allocate-user';
 import { RemoveAllocationDto } from './dto/remove-allocation';
-import { UnitService } from '../unit/unit.service';
 
 @Controller('allocations')
 export class AllocationController {
