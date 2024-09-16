@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
@@ -6,6 +6,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PrismaModule } from './modules/prisma/prisma.module';
 import { UnitModule } from './modules/unit/unit.module';
 import { AllocationModule } from './modules/allocation/allocation.module';
+import { AuthMiddleware } from './modules/middlewares/auth.middleware';
 
 @Module({
   imports: [
@@ -22,4 +23,10 @@ import { AllocationModule } from './modules/allocation/allocation.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(AuthMiddleware)
+      .forRoutes('allocations')
+  }
+}

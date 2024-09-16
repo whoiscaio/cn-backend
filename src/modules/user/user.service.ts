@@ -31,7 +31,7 @@ export class UserService {
       throw new HttpException('Invalid credentials', HttpStatus.BAD_REQUEST);
     }
 
-    const payload = { email: user.email, sub: user.id };
+    const payload = { email: user.email, id: user.id, name: user.name };
 
     return {
       access_token: this.jwtService.sign(payload),
