@@ -21,7 +21,6 @@ export class AllocationService {
       throw new HttpException("This unit does not support this shift.", HttpStatus.BAD_REQUEST);
     }
 
-    // Create the allocation
     return this.prisma.allocation.create({
       data: {
         userId,
