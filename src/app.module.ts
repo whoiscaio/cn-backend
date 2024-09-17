@@ -7,6 +7,8 @@ import { PrismaModule } from './modules/prisma/prisma.module';
 import { UnitModule } from './modules/unit/unit.module';
 import { AllocationModule } from './modules/allocation/allocation.module';
 import { AuthMiddleware } from './modules/middlewares/auth.middleware';
+import { AllocationController } from './modules/allocation/allocation.controller';
+import { UnitController } from './modules/unit/unit.controller';
 
 @Module({
   imports: [
@@ -27,6 +29,6 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(AuthMiddleware)
-      .forRoutes('allocations')
+      .forRoutes(AllocationController, UnitController)
   }
 }

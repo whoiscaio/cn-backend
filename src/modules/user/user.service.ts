@@ -35,6 +35,7 @@ export class UserService {
 
     return {
       access_token: this.jwtService.sign(payload),
+      user_id: payload.id,
     };
   }
 }
